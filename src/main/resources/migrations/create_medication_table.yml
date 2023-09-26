@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create_medication_table"
+      author: dev
+      failOnError: true
+      changes:
+        - createTable:
+            tableName: medication
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar
+              - column:
+                  name: dosage
+                  type: numeric
+              - column:
+                  name: unit
+                  type: varchar
+              - column:
+                  name: time
+                  type: time
+              - column:
+                  name: patient_id
+                  type: UUID
+              - column:
+                  name: creation_date
+                  type: timestamp
+              - column:
+                  name: modify_date
+                  type: timestamp

@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.0.6'
 }
 
 tasks.named('test') {

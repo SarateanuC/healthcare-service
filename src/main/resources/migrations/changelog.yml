@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: create_patient_table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: create_medication_table.yml
+      relativeToChangelogFile: true

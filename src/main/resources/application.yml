@@ -1,0 +1,16 @@
+server:
+       port: 8081
+spring:
+      datasource:
+                url: jdbc:postgresql://localhost:5438/healthcareDb
+                username: postgres
+                password: postgrespassword
+                driver-class-name: org.postgresql.Driver
+      jpa:
+          show-sql: true
+          hibernate.ddl-auto: validate
+          database-platform: org.hibernate.dialect.PostgreSQLDialect
+          open-in-view: false
+      liquibase:
+                change-log: migrations/changelog.yml
+

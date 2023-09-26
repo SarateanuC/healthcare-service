@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create_patient_table"
+      author: dev
+      failOnError: true
+      changes:
+        - createTable:
+            tableName: patient
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar
+              - column:
+                 name: lastname
+                 type: varchar
+              - column:
+                  name: gender
+                  type: varchar
+              - column:
+                  name: date_of_birth
+                  type: date
+              - column:
+                  name: creation_date
+                  type: timestamp
+              - column:
+                  name: modify_date
+                  type: timestamp
