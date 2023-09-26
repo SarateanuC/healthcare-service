@@ -6,15 +6,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlGroup;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
+
 @AutoConfigureMockMvc
 @SpringBootTest
 @Testcontainers
-@Sql("/init.sql")
+@SqlGroup({
+        @Sql(executionPhase = BEFORE_TEST_METHOD, scripts = "/init.sql"),
+        @Sql(executionPhase = AFTER_TEST_METHOD, scripts = "/clean.sql")
+})
 public class PostgresContainer {
     @Container
     private static final PostgreSQLContainer POSTGRES_SQL_CONTAINER =
